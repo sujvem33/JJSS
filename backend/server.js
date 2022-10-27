@@ -16,6 +16,10 @@ dotenv.config();
 
 const userRouter = require("./routes/api/users");
 
+const productRouter = require("./routes/api/products");
+
+
+
 app.use(morgan("dev"));
 
 app.use(express.json());
@@ -32,6 +36,8 @@ const DB = mongoose
 
 
   app.use("/api/users", userRouter);
+  app.use("/api/products", productRouter);
+  
 
   app.all("*", (request, response) => {
     response.send("Undefined route");

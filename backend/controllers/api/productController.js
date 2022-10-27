@@ -1,8 +1,16 @@
 const Product = require("./../../models/products");
+const data = require("./../../data/productData");
 
-// Define a route handler for creating users
-exports.createProduct = async (request, response) => {
+exports.seedProducts = async (request, response) => {
   try {
+    await Product.remove({});
+    const newProduct = await Product.insertMany(data.shoeData);
+    // console.log(shoeData.shoeData);
+
+    response.status(201).json({
+      status: "success",
+      data: { newProduct },
+    });
   } catch (error) {
     response.status(500).json({
       status: "error",
@@ -11,33 +19,36 @@ exports.createProduct = async (request, response) => {
   }
 };
 
-// Define a route handler for creating users
-exports.getProduct = async (request, response) => {
+exports.getAllProducts = async (request, response) => {
   try {
+    const allProducts = await Product.find();
+    response.status(200).json({
+      status: "success",
+      data: { allProducts },
+    });
   } catch (error) {
     response.status(404).json({
-      status: "fail",
-      message: error.message,
-    });
-  }
-};
-
-exports.editProduct = async (request, response) => {
-  try {
-  } catch (error) {
-    response.status(500).json({
       status: "error",
       error: error,
     });
   }
 };
 
-exports.deleteProduct = async (request, response) => {
+exports.getProducts = async (request, response) => {
   try {
+    let catagory = request.params.gender;
+    catagory = catagory[0].toUpperCase() + catagory.slice(1);
+
+    // console.log(catagory);
+    const allProducts = await Product.find({ gender: catagory });
+    response.status(200).json({
+      status: "success",
+      data: { allProducts },
+    });
   } catch (error) {
-    response.status(500).json({
+    response.status(404).json({
       status: "error",
       error: error,
     });
   }
-};
+}; // product controller

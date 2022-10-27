@@ -66,3 +66,29 @@ exports.getUser = async (request, response) => {
     });
   }
 };
+
+
+exports.getUsers = async (request, response) => {
+  try {
+    const users = await User.find();
+
+    // Assuming no user if found with that id
+    if (!users) {
+      throw new Error("Users not found");
+    }
+
+    // Send response
+    response.status(200).json({
+      status: "success",
+      data: {
+        users,
+      },
+    });
+  } catch (error) {
+    response.status(404).json({
+      status: "fail",
+      message: error.message,
+    });
+  }
+};
+

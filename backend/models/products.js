@@ -13,18 +13,18 @@ const productSchema = mongoose.Schema(
         required: [true],
         trim: true,
         enum: {
-          values: ["boy", "girl", "Men", "Women"],
+          values: ["Boy", "Girl", "Men", "Women"],
          
         },
       },
       category: {
         type: String,
         enum: {
-          values: ["casuals", "sandals", "athletic", "boots ", "running shoes"],
+          values: ["casuals", "sandals", "athletic", "boots"],
           
         },
       },
-      Description:{
+      description:{
         type: String,
         required: [true]
       },
@@ -33,7 +33,7 @@ const productSchema = mongoose.Schema(
         required: [true],
         
       },
-      images: {
+      image: {
         type: [String],
       }
     })

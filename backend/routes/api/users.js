@@ -10,6 +10,8 @@ const router = express.Router();
 // Use the router to redirect to different controller depending on the method
 router.route("/").post(userController.createUser);
 router.route("/:id").get(userController.getUser);
+router.route("/").get(userController.getUsers);
+
 
 // EXPORT ROUTER TO BE USED IN OTHER PARTS OF OUR APPLICATION
 module.exports = router;
