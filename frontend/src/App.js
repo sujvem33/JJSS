@@ -9,12 +9,11 @@ import Detail from "./pages/Detail"
 
 const App = () => {
   return (
-    <main className="App">
-      
+    <main className="App">  
         <>
           <Navbar  />
           <Routes>
-          <Route path="/api/home" element={<Allproducts />} />
+          <Route path="/api/products" element={<Allproducts />} />
           <Route path="/api/products/:gender" element={<Detail />} />
           </Routes>
         </>
