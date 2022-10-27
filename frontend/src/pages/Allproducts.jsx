@@ -5,7 +5,7 @@ import { allProducts } from "../utilities/products-services";
 
 function Allproducts() {
   const [products, setproducts] = useState({});
-  const { gender } = useParams()
+  
   const getallProducts = async (e) => {
     const productsall = await allProducts();
     console.log(productsall);
@@ -33,8 +33,6 @@ function Allproducts() {
         );
       })
     : [];
-
-// const genderList = await products.find().populate('gender')
 
   return <div>{productList}</div>;
 }

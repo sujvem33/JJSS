@@ -11,3 +11,18 @@ export async function allProducts() {
     throw new Error("Invalid");
   }
 }
+
+
+
+export async function eachProduct(gender) {
+  const res = await fetch(`${BASE_URL}/${gender}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error("Invalid");
+  }
+  
+}

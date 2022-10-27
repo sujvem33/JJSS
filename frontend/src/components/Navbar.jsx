@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
 
 const Navbar = ({}) => {
 
@@ -7,10 +7,11 @@ const Navbar = ({}) => {
     <nav>
      
       <Link to="/api/home">Home</Link> <br />
-      {/* <Link to="/api/products/:gender">Men
-      </Link> <br /> */}
-      
-      
+      <Link to="/api/products/men">Men</Link> <br />
+      <Link to="/api/products/women">Women</Link> <br />
+      <Link to="/api/products/girl">Girl</Link> <br />
+      <Link to="/api/products/boy">Boy</Link> <br />
+ 
     </nav>
   );
 };
